@@ -1,0 +1,12 @@
+django_template_help is a django app to make writing template tags easier and to make communication between template authors and django developers a bit easier.
+
+The helpers for creating template tags will be coming soon.
+
+Meanwhile, maybe {% context_help %} will be useful.
+
+To use:
+1) Place template_help on your python path.
+2) Place template_help in your INSTALLED_APPS.
+3) To get context help in templates:
+   {% load template_help %}
+   {% context_help %}

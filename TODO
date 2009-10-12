@@ -1,0 +1,6 @@
+Decouple context_help rendering from logic.
+Get forms added to admindocs ;-)
+Provide JS library-specific help to collapse verbose things, include docstring expansions, etc.
+For all loaded template libraries, provide links to admindocs pages.
+
+Make this stuff into a debug toolbar panel?
