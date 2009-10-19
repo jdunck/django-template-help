@@ -128,7 +128,7 @@ class ContextHelpNode(template.Node):
                 for inner_k, inner_v in v.items():
                     label = "%s.%s" % (k, inner_k)
                     if isinstance(inner_v, dict):
-                        self.render_row("Too many nested dicts", "stopping at %s" % (label,))
+                        self.render_row(results, "Too many nested dicts", "stopping at %s" % (label,))
                     else:
                         self.render_item(results, label, inner_v)
                 results.append("</table></td></tr>")
