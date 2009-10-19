@@ -4,7 +4,7 @@ from django.http import HttpRequest
 from django import template
 from django.template.defaultfilters import mark_safe, force_escape, pluralize
 from django.db.models.query import QuerySet
-from django.forms import Form, Field
+from django.forms import BaseForm, Field
 from django.db.models import Model
 from django.core import urlresolvers
 from django.core.paginator import Paginator, Page
@@ -57,7 +57,7 @@ class ContextHelpNode(template.Node):
             url = urlresolvers.reverse('django-admindocs-models-detail', args=[app_label, model_name])
             return "<a href='%s'>%s</a>" % (force_escape(url), 
                                             force_escape("%s.%s" % (app_label, model_name)))
-        elif isinstance(o, Form):
+        elif isinstance(o, BaseForm):
             return "<p>%s fields:</p>\n<ul>%s</ul>" % (
             o.__class__.__name__,
             "\n".join(["<li>%s</li>" % force_escape(field) for field in o.fields])
@@ -76,7 +76,7 @@ class ContextHelpNode(template.Node):
         results.append("<tr><td class='label'>%s</td><td class='explanation'>%s</td></tr>" % (force_escape(label),explanation))
 
     def render_item(self, results, label, o):
-        if isinstance(o, Form):
+        if isinstance(o, BaseForm):
             self.render_row(results, label, self.render_explanation(o))
         elif isinstance(o, tuple):
             if len(o) < 10:
