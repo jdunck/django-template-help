@@ -64,7 +64,9 @@ class ContextHelpNode(template.Node):
             )
         elif isinstance(o, (set, list, tuple, dict)):
             return "group of %s items" % len(o)
-        elif isinstance(o, (basestring, int, Decimal, float, datetime.date, datetime.time, datetime.datetime)):
+        elif isinstance(o, str):
+            return force_escape(unicode(o, 'utf-8'))
+        elif isinstance(o, (unicode, int, Decimal, float, datetime.date, datetime.time, datetime.datetime)):
             return force_escape(unicode(o))
         else:
             type_ = type(o)
